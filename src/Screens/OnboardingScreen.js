@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import ThemedText from '../components/ThemedText';
+import { Colors, Spacing, FontSizes, FontWeights } from '../theme/Theme';
 
 const OnboardingScreen = ({ navigation }) => {
   const handleGetStarted = () => {
@@ -9,13 +11,29 @@ const OnboardingScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.title}>Get Started</Text>
-        <Text style={styles.description}>
-          Welcome to our amazing app! Tap the button below to continue.
-        </Text>
+        <View style={styles.logoContainer}>
+          <View style={styles.plantIcon}>
+            <ThemedText variant="title" color={Colors.white}>🌱</ThemedText>
+          </View>
+        </View>
+        
+        <ThemedText variant="title" color={Colors.white} style={styles.title}>
+          ROOTS
+        </ThemedText>
+        
+        <ThemedText variant="body" color={Colors.white} style={styles.subtitle}>
+          Nurturing Growth
+        </ThemedText>
+        
+        <ThemedText variant="body" color={Colors.white} style={styles.description}>
+          Welcome to your personal plant care companion. 
+          Track, nurture, and watch your green friends thrive.
+        </ThemedText>
         
         <TouchableOpacity style={styles.button} onPress={handleGetStarted}>
-          <Text style={styles.buttonText}>Continue to Dashboard</Text>
+          <ThemedText variant="heading" color={Colors.primary} style={styles.buttonText}>
+            Get Started
+          </ThemedText>
         </TouchableOpacity>
       </View>
     </View>
@@ -25,41 +43,55 @@ const OnboardingScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.primary,
   },
   content: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: Spacing.xl,
+  },
+  logoContainer: {
+    marginBottom: Spacing.lg,
+  },
+  plantIcon: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: Spacing.md,
   },
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 20,
+    textAlign: 'center',
+    marginBottom: Spacing.sm,
+    letterSpacing: 2,
+  },
+  subtitle: {
+    textAlign: 'center',
+    marginBottom: Spacing.xxl,
+    opacity: 0.9,
   },
   description: {
-    fontSize: 16,
-    color: '#666',
     textAlign: 'center',
-    marginBottom: 40,
+    marginBottom: Spacing.xxl,
     lineHeight: 24,
+    opacity: 0.9,
   },
   button: {
-    backgroundColor: '#7BC1FF',
-    paddingHorizontal: 30,
-    paddingVertical: 15,
-    borderRadius: 25,
+    backgroundColor: Colors.white,
+    paddingHorizontal: Spacing.xxl,
+    paddingVertical: Spacing.md,
+    borderRadius: 30,
     elevation: 3,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 4,
+    shadowColor: Colors.black,
   },
   buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: '600',
+    fontWeight: FontWeights.semibold,
   },
 });
 
