@@ -6,6 +6,8 @@ react {
     autolinkLibrariesWithApp()
 }
 
+
+
 def enableProguardInReleaseBuilds = false
 def enableHermes = true
 
