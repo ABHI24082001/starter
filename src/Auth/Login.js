@@ -11,7 +11,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-import { signIn, signUp, getUser, signOut } from './authService';
+import { signIn, signUp, getUser, signOut } from '../../supabase';
 
 export default function App() {
   const [email, setEmail] = useState('');
